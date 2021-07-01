@@ -14,3 +14,4 @@ module.exports = {
 
     message.channel.send(membercountEmbed)
   }
+}
