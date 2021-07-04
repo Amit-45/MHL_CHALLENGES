@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content
+		="width=device-width, initial-scale=1.0">
+
+	<title>Dice Game</title>
+<link rel="stylesheet" type="text/css" href="n1.css">
+	<style>
+		.container {
+			height: 40%;
+			width: 90%;
+			margin: 60px;
+			text-align: center;
+		}
+
+		.dice {
+			text-align: center;
+			display: inline-block;
+			margin: 20px;
+		}
+
+		body {
+			background: url(k1.png);			margin: 0;
+		}
+
+		h1 {
+			margin: 30px;
+			
+			text-shadow: 5px 0 #232931;
+			font-size: 4.5rem;
+			color: #ffc107;
+			text-align: center;
+		}
+
+		p {
+			font-size: 2rem;
+			color: #4ecca3;
+			
+		}
+
+		img {
+			width: 100%;
+		}
+
+		.bottom {
+			padding-top: 30px;
+		}
+
+		.butn {
+			background: #18ffb4;
+			margin: 20px;
+			border-radius: 25px;
+			color: #ffff;
+			font-size: 30px;
+			padding: 16px 25px 16px 25px;
+			text-decoration: none;
+		}
+
+		.butn:hover {
+			background: #232931;
+			background: #ffc107;
+  box-shadow: 0 5px 50px 0 #ffc107 inset, 0 5px 50px 0 #ffc107,
+              0 5px 50px 0 #ffc107 inset, 0 5px 50px 0 #ffc107;
+              text-shadow: 0 5px 50px 0 #ffc107 , 0 5px 50px 0 #ffc107;
+              color: black;border-radius: 8px;
+			text-decoration: none;
+		}
+		.fix{
+	clear: both;
+	overflow: hidden;
+}
+header{
+	overflow: hidden;
+	height: 100vh;
+
+}
+/*.vid{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+
+}*/
+.navarea{
+	background: rgba(0,0,0,0.7);
+	height: 70px;
+	position: absolute;
+	width: 100%;
+
+}
+.logo{
+	margin: 0 50px;
+	height: 60px;
+	float: left;
+	color: #fff;
+	font-size: 35px;
+	text-transform:capitalize;
+	font-weight: bold;
+	letter-spacing: 2px;
+
+
+}
+.logo span{
+color: #18ffb4;
+
+}
+.menu{
+
+	float: right;list-style: none;
+	margin: 20px;
+}
+.menu li{
+	display: inline-block;
+	margin: 0 5px;font-size: 25px;	
+
+}
+.menu li a{
+	text-decoration: none;
+	color:#fff;
+	padding: 5px 10px;
+	letter-spacing: 2px;
+
+}
+
+.menu li :hover{
+	background: #ffc107;
+  box-shadow: 0 5px 50px 0 #ffc107 inset, 0 5px 50px 0 #ffc107,
+              0 5px 50px 0 #ffc107 inset, 0 5px 50px 0 #ffc107;
+              text-shadow: 0 5px 50px 0 #ffc107 , 0 5px 50px 0 #ffc107;
+              color: black;border-radius: 8px;
+}
+
+	</style>
+</head>
+
+<body>
+	<embed src="aud.mp3" loop="true" autostart="true" width="2" height="0" unmuted></embed>
+	<header class="fix">
+	<!-- <video class="vid" autoplay muted loop>
+	<source src="y1.mp4" type="video/mp4"></video><embed src="aud.mp3" loop="true" autostart="true" width="2" height="0" unmuted></embed> -->
+	<div class="navarea">
+		<div class="logo">
+			<span>AMONG US </span>LUDO
+		</div>
+		<ul class="menu">
+			<li><a href="#">HOME</a></li>
+				<li><a href="ab.html">ABOUT US</a></li><li><a href="#">CONTACT US</a></li>
+			
+		</ul>
+	</div>
+	<div class="container">
+	<h1>!!! START THE MATCH !!!</h1>
+		<div class="dice">
+			<p class="Player1">Player 1</p>
+			<img class="img1" src="dice6.png">
+		</div>
+
+		<div class="dice">
+			<p class="Player2">Player 2</p>
+			<img class="img2" src="dice6.png">
+		</div>
+	</div>
+
+	<div class="container bottom">
+		<button type="button" class="butn"
+			onClick="rollTheDice()">
+			Roll the Dice
+		</button>
+	
+		<button type="button" class="butn"
+			onClick="editNames()">
+			Edit  the Names
+		</button>
+	</div>
+
+	<script>
+
+		// Player name
+		var player1 = "Player 1";
+		var player2 = "Player 2";
+
+		// Function to change the player name
+		function editNames() {
+			player1 = prompt("Change Player1 name");
+			player2 = prompt("Change player2 name");
+
+			document.querySelector("p.Player1")
+							.innerHTML = player1;
+							
+			document.querySelector("p.Player2")
+							.innerHTML = player2;
+		}
+
+		// Function to roll the dice
+		function rollTheDice() {
+			setTimeout(function () {
+				var randomNumber1 = Math.floor(Math.random() * 6) + 1;
+				var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+				document.querySelector(".img1").setAttribute("src",
+					"dice" + randomNumber1 + ".png");
+
+				document.querySelector(".img2").setAttribute("src",
+					"dice" + randomNumber2 + ".png");
+
+				if (randomNumber1 === randomNumber2) {
+					document.querySelector("h1").innerHTML = "!!! THE MATCH IS DRAW !!!";
+				}
+
+				else if (randomNumber1 < randomNumber2) {
+					document.querySelector("h1").innerHTML
+						= (player2 + " WON THE GAME !!!!");
+				}
+
+				else {
+					document.querySelector("h1").innerHTML
+						= (player1 + " WON THE GAME !!!!");
+				}
+			}, 2500);
+		}
+	</script>
+</header>
+</body>
+
+</html>
+
