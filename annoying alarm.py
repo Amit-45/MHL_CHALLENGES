@@ -3,7 +3,7 @@ import datetime
 import time
 n=1
 c,b,a=input("Enter Date: ").split("/")
-hr,minn, sec=input("Enter the Time = ").split(":")
+hr,minn, sec=input("Enter the Time: ").split(":")
 shedule_date = datetime.date(int(a),int(b), int(c)
 n=1
 while n>0:
